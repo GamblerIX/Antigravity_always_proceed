@@ -19,11 +19,15 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
+    - name: Install Windows Desktop Workload
+      run: dotnet workload install wasm-tools || true
+      continue-on-error: true
+
     - name: Restore dependencies
       run: dotnet restore AlwaysProceed.csproj
 
     - name: Build
-      run: dotnet build AlwaysProceed.csproj --configuration Release --no-restore
+      run: dotnet build AlwaysProceed.csproj --configuration Release
 
     - name: Publish Single File
       run: dotnet publish AlwaysProceed.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishReadyToRun=true -o ./publish

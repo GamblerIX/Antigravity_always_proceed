@@ -6,7 +6,6 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon />
     <AssemblyName>AlwaysProceed</AssemblyName>
     <RootNamespace>AlwaysProceed</RootNamespace>
     <Version>1.0.0</Version>
