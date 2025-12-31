@@ -1,0 +1,58 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    defaults:
+      run:
+        working-directory: NDHSM
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore NDHSM.csproj
+
+    - name: Build
+      run: dotnet build NDHSM.csproj --configuration Release --no-restore
+
+    - name: Publish Single File
+      run: dotnet publish NDHSM.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishReadyToRun=true -o ./publish
+
+    - name: Create Installer (Optional - using Zip for now)
+      run: |
+        Compress-Archive -Path ./publish/* -DestinationPath ./NDHSM_v1.0.0.zip
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: NDHSM-Binary
+        path: NDHSM/publish/NDHSM.exe
+
+    - name: Compile Inno Setup
+      run: |
+        & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" NDHSM.iss /O..
+
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          NDHSM/NDHSM_v1.0.0.zip
+          NDHSM/publish/NDHSM.exe
+          ./NDHSM_Setup.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,49 @@
+<Window x:Class="NDHSM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2003/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2003/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        mc:Ignorable="d"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        Title="NDHSM - Clicker" Height="250" Width="400"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
+        Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}">
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="NDHSM Alt+Enter Clicker" 
+                       FontSize="24" 
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="每秒自动点击一次 Alt + Enter" 
+                       FontSize="14" 
+                       Opacity="0.7"
+                       HorizontalAlignment="Center"
+                       Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <ui:ToggleSwitch x:Name="ClickerToggle" 
+                             Header="运行状态" 
+                             OffContent="停止" 
+                             OnContent="运行中"
+                             Toggled="ClickerToggle_Toggled"
+                             HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="2" 
+                   x:Name="StatusText"
+                   Text="待机中..." 
+                   HorizontalAlignment="Center"
+                   FontSize="12"
+                   Opacity="0.5"/>
+    </Grid>
+</Window>
