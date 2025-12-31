@@ -1,22 +1,38 @@
 # AlwaysProceed
 
-AlwaysProceed 是一个简单的 WPF 应用程序，旨在后台每秒自动触发一次 `Alt + Enter` 按键组合。
+一个简单的控制台应用程序，每秒自动发送一次 `Alt + Enter` 按键组合。
 
 ## 功能
 
-- 后台自动点击 `Alt + Enter`。
-- 使用 ModernWpf 风格的界面。
-- 可开关控制。
+- 启动后持续运行
+- 每秒发送一次 `Alt + Enter`
+- 按 `Ctrl+C` 或关闭终端退出
 
-## 构建与发布
+## 使用方法
 
-项目使用 GitHub Actions 进行自动构建和发布。
-当推送标签（例如 `v1.0.0`）时，会自动创建 Release 并上传二进制文件和安装包。
+直接运行 `AlwaysProceed.exe` 即可。
 
-### 本地编译
+```
+╔════════════════════════════════════════╗
+║   AlwaysProceed - Alt+Enter Clicker    ║
+╠════════════════════════════════════════╣
+║  每秒自动发送一次 Alt+Enter 按键       ║
+║  按 Ctrl+C 或关闭窗口退出              ║
+╚════════════════════════════════════════╝
 
-需要安装 .NET 8 SDK。
+[20:30:01] 已发送 Alt+Enter
+[20:30:02] 已发送 Alt+Enter
+...
+```
+
+## 构建
+
+需要 .NET 8 SDK：
 
 ```powershell
-dotnet publish AlwaysProceed.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishReadyToRun=true
+dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
 ```
+
+## 自动构建
+
+推送 `v*` 标签时，GitHub Actions 会自动构建并创建 Release。

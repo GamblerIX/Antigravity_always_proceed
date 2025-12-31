@@ -19,10 +19,6 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Install Windows Desktop Workload
-      run: dotnet workload install wasm-tools || true
-      continue-on-error: true
-
     - name: Restore dependencies
       run: dotnet restore AlwaysProceed.csproj
 
@@ -32,7 +28,7 @@ jobs:
     - name: Publish Single File
       run: dotnet publish AlwaysProceed.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishReadyToRun=true -o ./publish
 
-    - name: Create Installer (Optional - using Zip for now)
+    - name: Create Zip
       run: |
         Compress-Archive -Path ./publish/* -DestinationPath ./AlwaysProceed_v1.0.0.zip
 
@@ -42,10 +38,6 @@ jobs:
         name: AlwaysProceed-Binary
         path: publish/AlwaysProceed.exe
 
-    - name: Compile Inno Setup
-      run: |
-        & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" AlwaysProceed.iss
-
     - name: Create Release
       if: startsWith(github.ref, 'refs/tags/')
       uses: softprops/action-gh-release@v2
@@ -53,6 +45,5 @@ jobs:
         files: |
           AlwaysProceed_v1.0.0.zip
           publish/AlwaysProceed.exe
-          Output/AlwaysProceed_Setup.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
