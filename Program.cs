@@ -18,12 +18,12 @@ namespace AlwaysProceed
         static void Main(string[] args)
         {
             Console.Title = "AlwaysProceed - Alt+Enter Clicker";
-            Console.WriteLine("╔════════════════════════════════════════╗");
-            Console.WriteLine("║   AlwaysProceed - Alt+Enter Clicker    ║");
-            Console.WriteLine("╠════════════════════════════════════════╣");
-            Console.WriteLine("║  每秒自动发送一次 Alt+Enter 按键       ║");
-            Console.WriteLine("║  按 Ctrl+C 或关闭窗口退出              ║");
-            Console.WriteLine("╚════════════════════════════════════════╝");
+            Console.WriteLine("════════════════════════════════════════");
+            Console.WriteLine(" AlwaysProceed - Alt+Enter Clicker    ");
+            Console.WriteLine("════════════════════════════════════════");
+            Console.WriteLine(" 每秒自动发送一次 Alt+Enter 按键       ");
+            Console.WriteLine(" 按 Ctrl+C 或关闭窗口退出              ");
+            Console.WriteLine("════════════════════════════════════════");
             Console.WriteLine();
 
             Console.CancelKeyPress += (sender, e) =>
