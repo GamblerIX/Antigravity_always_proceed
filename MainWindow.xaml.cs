@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace NDHSM
+namespace AlwaysProceed
 {
     public partial class MainWindow : Window
     {

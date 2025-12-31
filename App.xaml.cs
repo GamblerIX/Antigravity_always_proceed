@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace NDHSM
+namespace AlwaysProceed
 {
     public partial class App : Application
     {

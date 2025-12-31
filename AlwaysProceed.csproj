@@ -7,11 +7,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <ApplicationIcon />
-    <AssemblyName>NDHSM</AssemblyName>
-    <RootNamespace>NDHSM</RootNamespace>
+    <AssemblyName>AlwaysProceed</AssemblyName>
+    <RootNamespace>AlwaysProceed</RootNamespace>
     <Version>1.0.0</Version>
     <Authors>GamblerIX</Authors>
-    <Description>NDHSM Background Alt+Enter Clicker</Description>
+    <Description>Background Alt+Enter Clicker</Description>
   </PropertyGroup>
 
   <ItemGroup>

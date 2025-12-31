@@ -1,4 +1,4 @@
-<Window x:Class="NDHSM.MainWindow"
+<Window x:Class="AlwaysProceed.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2003/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2003/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:ui="http://schemas.modernwpf.com/2019"
         mc:Ignorable="d"
         ui:WindowHelper.UseModernWindowStyle="True"
-        Title="NDHSM - Clicker" Height="250" Width="400"
+        Title="AlwaysProceed - Clicker" Height="250" Width="400"
         WindowStartupLocation="CenterScreen"
         Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
         Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}">
@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="0,0,0,20">
-            <TextBlock Text="NDHSM Alt+Enter Clicker" 
+            <TextBlock Text="AlwaysProceed Clicker" 
                        FontSize="24" 
                        FontWeight="Bold"
                        HorizontalAlignment="Center"/>
@@ -32,11 +32,11 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
             <ui:ToggleSwitch x:Name="ClickerToggle" 
-                             Header="运行状态" 
-                             OffContent="停止" 
-                             OnContent="运行中"
-                             Toggled="ClickerToggle_Toggled"
-                             HorizontalAlignment="Center"/>
+                              Header="运行状态" 
+                              OffContent="停止" 
+                              OnContent="运行中"
+                              Toggled="ClickerToggle_Toggled"
+                              HorizontalAlignment="Center"/>
         </StackPanel>
 
         <TextBlock Grid.Row="2" 
